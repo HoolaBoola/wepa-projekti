@@ -11,6 +11,11 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <form action="/register" method="POST">
+            Name: <input type="text" name="name" id="name"/><br/>
+            Password: <input type="password" name="password" id="password"/><br/>
+            Minkä merkkijonon haluaisit näytettävän profiilin yhteydessä? <input type="text" name="merkkijono" id="merkkijono"/><br/>
+            <input type="submit"/>
+        </form>
     </body>
 </html>
