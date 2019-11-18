@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 import java.sql.Timestamp;
 import javax.persistence.Column;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -23,7 +24,7 @@ import javax.persistence.Column;
 @AllArgsConstructor
 public class Message extends AbstractPersistable<Long>{
     
-    @Column
+    @ManyToOne
     private Account author;
     
     @Column

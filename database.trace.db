@@ -272,3 +272,6 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/hajaja
 	at org.h2.mvstore.FileStore.open(FileStore.java:173)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
 	... 65 more
+2019-11-18 13:29:08 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "IMAGE[*]"; expected "INSERT, {"; SQL statement:
+IMAGE [42001-197]
