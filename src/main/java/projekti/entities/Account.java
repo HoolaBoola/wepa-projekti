@@ -38,5 +38,7 @@ public class Account extends AbstractPersistable<Long> {
 
     @Column
     private String merkkijono;
-
+    
+    @OneToMany
+    private List<Account> followers;
 }
