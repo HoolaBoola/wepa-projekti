@@ -25,7 +25,7 @@ import javax.persistence.ManyToOne;
 public class Message extends AbstractPersistable<Long>{
     
     @ManyToOne
-    private Account author;
+    private Account account;
     
     @Column
     private Timestamp timestamp;

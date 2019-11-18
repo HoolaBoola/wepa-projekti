@@ -30,7 +30,7 @@ public class Account extends AbstractPersistable<Long> {
     @OneToMany(mappedBy = "poster")
     private List<Image> images;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "account")
     private List<Message> messages;
 
     @Column
