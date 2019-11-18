@@ -8,12 +8,10 @@ package projekti.entities;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -25,6 +23,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@EqualsAndHashCode
 public class Account extends AbstractPersistable<Long> {
 
     @OneToMany(mappedBy = "poster")
@@ -38,7 +37,23 @@ public class Account extends AbstractPersistable<Long> {
 
     @Column
     private String merkkijono;
-    
+
     @OneToMany
     private List<Account> followers;
+
+    public boolean equals(Account other){
+        if(other == null){
+            return false;
+        }
+        
+        if(!other.name.equals(this.name)){
+            return false;
+        }
+        
+        if(!other.merkkijono.equals(this.merkkijono)){
+            return false;
+        }
+        
+        return true;
+    }
 }
