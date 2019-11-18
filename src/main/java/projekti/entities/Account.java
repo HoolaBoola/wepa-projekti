@@ -56,4 +56,9 @@ public class Account extends AbstractPersistable<Long> {
         
         return true;
     }
+    
+    @Override
+    public String toString(){
+        return name + ", " + merkkijono;
+    }
 }

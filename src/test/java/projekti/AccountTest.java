@@ -27,6 +27,8 @@ public class AccountTest extends org.fluentlenium.adapter.junit.FluentTest {
         account.setName("James Bond");
         account.setMerkkijono("Ja");
         
+        accService.list().forEach(acc -> System.out.println(acc));
+        
         accService.addAccount(account);
         
         assertTrue(accService.list().contains(account));
