@@ -6,8 +6,9 @@
 package projekti.entities;
 
 import java.util.List;
-import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,33 +33,37 @@ public class Account extends AbstractPersistable<Long> {
     @OneToMany(mappedBy = "account")
     private List<Message> messages;
 
-    @Column
     private String name;
 
-    @Column
     private String merkkijono;
+
+    private String password;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+
+    private List<String> authorities;
 
     @OneToMany
     private List<Account> followers;
 
-    public boolean equals(Account other){
-        if(other == null){
+    public boolean equals(Account other) {
+        if (other == null) {
             return false;
         }
-        
-        if(!other.name.equals(this.name)){
+
+        if (!other.name.equals(this.name)) {
             return false;
         }
-        
-        if(!other.merkkijono.equals(this.merkkijono)){
+
+        if (!other.merkkijono.equals(this.merkkijono)) {
             return false;
         }
-        
+
         return true;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return name + ", " + merkkijono;
     }
 }

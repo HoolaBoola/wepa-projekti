@@ -30,4 +30,8 @@ public class AccountService {
             accountRep.save(account);
         }
     }
+    
+    public Account findByName(String username) {
+        return accountRep.findByUsername(username);
+    }
 }
