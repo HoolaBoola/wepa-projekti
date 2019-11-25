@@ -35,7 +35,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin()
                 .loginPage("/login")
                 .permitAll();
-
     }
 
     @Autowired
