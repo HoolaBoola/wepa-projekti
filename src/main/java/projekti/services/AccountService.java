@@ -32,6 +32,6 @@ public class AccountService {
     }
     
     public Account findByName(String username) {
-        return accountRep.findByUsername(username);
+        return accountRep.findByName(username);
     }
 }

@@ -14,5 +14,5 @@ import projekti.entities.Account;
  */
 public interface AccountRepository extends JpaRepository<Account, Long> {
 
-    Account findByUsername(String username);
+    Account findByName(String username);
 }
