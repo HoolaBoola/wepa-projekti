@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  *
  * @author hajajaim
  */
-@Profile("production")
+@Profile("kaaa")
 @Configuration
 @EnableWebSecurity
 public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapter {
