@@ -33,8 +33,6 @@ public class AccountService {
             accountRep.save(account);
         }
 
-        accountRep.save(account);
-
     }
 
     public Account findByName(String username) {
