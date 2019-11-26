@@ -1,5 +1,6 @@
 package projekti;
 
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,6 +20,12 @@ public class DefaultController {
 
     @Autowired
     PasswordEncoder encoder;
+    
+    @Profile("test")
+    public String index(Model model){
+        System.out.println(accountService.list());
+        return "index";
+    }
 
     @GetMapping("/")
     public String helloWorld(Model model) {
@@ -42,8 +49,12 @@ public class DefaultController {
         account.setMerkkijono(merkkijono);
         account.setPassword(encoder.encode(password));
         account.setName(name);
+        account.setAuthorities(new ArrayList<>());
+        account.setFollowers(new ArrayList<>());
+        account.setImages(new ArrayList<>());
         account.getAuthorities().add("USER");
-
+        
+        System.out.println("Account luotu");
         accountService.addAccount(account);
 
         return "redirect:/";

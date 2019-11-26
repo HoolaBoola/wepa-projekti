@@ -26,11 +26,17 @@ public class AccountService {
     }
 
     public void addAccount(Account account) {
+        if (account == null) {
+            return;
+        }
         if (!accountRep.findAll().contains(account)) {
             accountRep.save(account);
         }
+
+        accountRep.save(account);
+
     }
-    
+
     public Account findByName(String username) {
         return accountRep.findByName(username);
     }

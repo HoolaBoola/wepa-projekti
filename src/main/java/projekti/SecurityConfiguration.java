@@ -30,19 +30,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+        http.headers().frameOptions().sameOrigin();
         http.formLogin()
                 .permitAll();
         http.authorizeRequests()
+                .antMatchers("/h2-console", "/h2-console/**").permitAll()
                 .antMatchers("/", "/register", "/login").permitAll()
+                .anyRequest().permitAll()
                 .anyRequest().authenticated().and()
                 .logout()
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutSuccessUrl("/login")
                 .permitAll();
-//        http.formLogin()
-//                .loginPage("/login")
-//                .permitAll();
     }
 
     @Autowired
