@@ -10,6 +10,8 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,6 +27,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @AllArgsConstructor
 @Entity
 @EqualsAndHashCode
+@Table(uniqueConstraints=@UniqueConstraint(columnNames="user"))
 public class Account extends AbstractPersistable<Long> {
 
     @OneToMany(mappedBy = "poster")
@@ -38,6 +41,8 @@ public class Account extends AbstractPersistable<Long> {
     private String merkkijono;
 
     private String password;
+    
+    private String user;
 
     @ElementCollection(fetch = FetchType.EAGER)
 
@@ -51,19 +56,14 @@ public class Account extends AbstractPersistable<Long> {
             return false;
         }
 
-        if (!other.name.equals(this.name)) {
+        if (!other.user.equals(this.user)) {
             return false;
         }
-
-        if (!other.merkkijono.equals(this.merkkijono)) {
-            return false;
-        }
-
         return true;
     }
 
     @Override
     public String toString() {
-        return name + ", " + merkkijono;
+        return user + ", " + merkkijono;
     }
 }

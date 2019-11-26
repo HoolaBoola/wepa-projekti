@@ -34,20 +34,17 @@ public class DefaultController {
         return "index";
     }
 
-//    @GetMapping("/login")
-//    public String login(Model model) {
-//        return "login";
-//    }
-
     @GetMapping("/register")
     public String register(Model model) {
+        accountService.list().forEach(System.out::println);
         return "registering";
     }
 
     @PostMapping("/register")
-    public String postRegister(@RequestParam String name, @RequestParam String password, @RequestParam String merkkijono) {
+    public String postRegister(@RequestParam String name, @RequestParam String password, @RequestParam String merkkijono, @RequestParam String username) {
         System.out.println("Postmapping toimii rekisteröinnissä");
         Account account = new Account();
+        account.setUser(username);
         account.setMerkkijono(merkkijono);
         account.setPassword(encoder.encode(password));
         account.setName(name);
@@ -62,9 +59,5 @@ public class DefaultController {
         return "redirect:/";
     }
 
-//    @PostMapping("/login")
-//    public String postLogin(@RequestParam String name, @RequestParam String password) {
-//        return "redirect:/";
-//    }
 
 }
