@@ -1,6 +1,5 @@
 package projekti;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,9 +27,12 @@ public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapte
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+        http.headers().frameOptions().sameOrigin();
         http.formLogin()
                 .permitAll();
         http.authorizeRequests()
+                .antMatchers("/h2-console", "/h2-console/**").permitAll()
                 .antMatchers("/", "/register", "/login").permitAll()
                 .anyRequest().authenticated().and()
                 .logout()
