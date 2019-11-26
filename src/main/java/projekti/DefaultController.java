@@ -29,14 +29,15 @@ public class DefaultController {
 
     @GetMapping("/")
     public String helloWorld(Model model) {
+        System.out.println("Getmapping toimii juuresta");
         model.addAttribute("message", "World!");
         return "index";
     }
 
-    @GetMapping("/login")
-    public String login(Model model) {
-        return "login";
-    }
+//    @GetMapping("/login")
+//    public String login(Model model) {
+//        return "login";
+//    }
 
     @GetMapping("/register")
     public String register(Model model) {
@@ -45,6 +46,7 @@ public class DefaultController {
 
     @PostMapping("/register")
     public String postRegister(@RequestParam String name, @RequestParam String password, @RequestParam String merkkijono) {
+        System.out.println("Postmapping toimii rekisteröinnissä");
         Account account = new Account();
         account.setMerkkijono(merkkijono);
         account.setPassword(encoder.encode(password));
@@ -60,9 +62,9 @@ public class DefaultController {
         return "redirect:/";
     }
 
-    @PostMapping("/login")
-    public String postLogin(@RequestParam String name, @RequestParam String password) {
-        return "redirect:/";
-    }
+//    @PostMapping("/login")
+//    public String postLogin(@RequestParam String name, @RequestParam String password) {
+//        return "redirect:/";
+//    }
 
 }
