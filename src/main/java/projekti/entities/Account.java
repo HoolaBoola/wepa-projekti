@@ -6,12 +6,11 @@
 package projekti.entities;
 
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -27,7 +26,6 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @AllArgsConstructor
 @Entity
 @EqualsAndHashCode
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "user"))
 public class Account extends AbstractPersistable<Long> {
 
     @OneToMany(mappedBy = "poster")
@@ -38,10 +36,12 @@ public class Account extends AbstractPersistable<Long> {
 
     private String name;
 
+    @Column(unique=true)
     private String merkkijono;
 
     private String password;
 
+    @Column(unique=true)
     private String user;
 
     @ElementCollection(fetch = FetchType.EAGER)

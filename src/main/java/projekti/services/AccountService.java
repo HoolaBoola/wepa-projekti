@@ -22,6 +22,7 @@ public class AccountService {
     private AccountRepository accountRep;
 
     public List<Account> list() {
+        accountRep.deleteAll();
         return accountRep.findAll();
     }
 
