@@ -25,14 +25,30 @@ public class AccountService {
         return accountRep.findAll();
     }
 
-    public void addAccount(Account account) {
+    public boolean addAccount(Account account) {
         if (account == null) {
-            return;
-        }
-        if (!accountRep.findAll().contains(account)) {
-            accountRep.save(account);
+            return false;
         }
 
+        if (account.getAuthorities() == null
+                || account.getFollowers() == null
+                || account.getImages() == null
+                || account.getMerkkijono() == null
+                || account.getMerkkijono().isEmpty()
+                || account.getUser() == null
+                || account.getUser().isEmpty()
+                || account.getPassword() == null
+                || account.getPassword().isEmpty()
+                || account.getMessages() == null) {
+            return false;
+        }
+        
+        if (!accountRep.findAll().contains(account)) {
+            accountRep.save(account);
+            return true;
+        }
+        
+        return false;
     }
 
     public Account findByName(String username) {

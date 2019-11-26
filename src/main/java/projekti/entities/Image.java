@@ -27,10 +27,13 @@ public class Image extends AbstractPersistable<Long> {
 
     @ManyToOne
     private Account poster;
-    
+
     private String name;
+
     private String mediaType;
+
     private Long size;
+
     private String caption;
 
     @Lob

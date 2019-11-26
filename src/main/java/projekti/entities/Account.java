@@ -27,7 +27,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @AllArgsConstructor
 @Entity
 @EqualsAndHashCode
-@Table(uniqueConstraints=@UniqueConstraint(columnNames="user"))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "user"))
 public class Account extends AbstractPersistable<Long> {
 
     @OneToMany(mappedBy = "poster")
@@ -41,11 +41,10 @@ public class Account extends AbstractPersistable<Long> {
     private String merkkijono;
 
     private String password;
-    
+
     private String user;
 
     @ElementCollection(fetch = FetchType.EAGER)
-
     private List<String> authorities;
 
     @OneToMany
