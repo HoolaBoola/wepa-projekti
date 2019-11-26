@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  *
  * @author hajajaim
  */
-@Profile("default")
+@Profile("production")
 @Configuration
 @EnableWebSecurity
 public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -28,7 +28,6 @@ public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapte
                 .permitAll();
         http.authorizeRequests()
                 .antMatchers("/", "/register", "/login").permitAll()
-                .anyRequest().permitAll()
                 .anyRequest().authenticated().and()
                 .logout()
                 .invalidateHttpSession(true)
